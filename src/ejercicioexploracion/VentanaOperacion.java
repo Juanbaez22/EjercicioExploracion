@@ -63,8 +63,18 @@ public class VentanaOperacion extends javax.swing.JFrame {
         });
 
         Btnmultiplicacion.setText("*");
+        Btnmultiplicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnmultiplicacionActionPerformed(evt);
+            }
+        });
 
         Btndivision.setText("/");
+        Btndivision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtndivisionActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setText("Resultado:");
@@ -150,8 +160,20 @@ public class VentanaOperacion extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnrestaActionPerformed
 
     private void FresultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FresultadoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_FresultadoActionPerformed
+
+    private void BtnmultiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnmultiplicacionActionPerformed
+     entrada ();
+        Datos.Multiplicacion(num1, num2);
+       Fresultado.setText(String.valueOf(Datos.resultado));
+    }//GEN-LAST:event_BtnmultiplicacionActionPerformed
+
+    private void BtndivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtndivisionActionPerformed
+        entrada ();
+        Datos.Division(num1, num2);
+       Fresultado.setText(String.valueOf(Datos.resultado));
+    }//GEN-LAST:event_BtndivisionActionPerformed
 
  
     public static void main(String args[]) {
