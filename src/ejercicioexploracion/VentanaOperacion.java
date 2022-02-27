@@ -8,15 +8,16 @@ package ejercicioexploracion;
 public class VentanaOperacion extends javax.swing.JFrame {
 
     EjercicioExploracion Datos = new  EjercicioExploracion();
-   double num1;
+   
+    double num1;
    double num2;
    
     public VentanaOperacion() {
         initComponents();
     }
-    public void Entrada (){
-        double num1 = Double.parseDouble (Num1.getText());
-        double num2 = Double.parseDouble (Num2.getText());
+    public void entrada (){
+        num1 = Double.parseDouble (Num1.getText());
+        num2 = Double.parseDouble (Num2.getText());
     }
 
  
@@ -34,7 +35,7 @@ public class VentanaOperacion extends javax.swing.JFrame {
         Btnmultiplicacion = new javax.swing.JButton();
         Btndivision = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        Lresultado = new javax.swing.JLabel();
+        Fresultado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +56,11 @@ public class VentanaOperacion extends javax.swing.JFrame {
         });
 
         Btnresta.setText("-");
+        Btnresta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnrestaActionPerformed(evt);
+            }
+        });
 
         Btnmultiplicacion.setText("*");
 
@@ -63,13 +69,21 @@ public class VentanaOperacion extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
         jLabel4.setText("Resultado:");
 
-        Lresultado.setText("0");
+        Fresultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FresultadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -79,7 +93,7 @@ public class VentanaOperacion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Num2)
+                            .addComponent(Num2, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                             .addComponent(Num1))
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -93,12 +107,8 @@ public class VentanaOperacion extends javax.swing.JFrame {
                                 .addComponent(Btndivision)))
                         .addGap(68, 68, 68))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Lresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Fresultado, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,22 +127,31 @@ public class VentanaOperacion extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(Btnmultiplicacion)
                     .addComponent(Btndivision))
-                .addGap(73, 73, 73)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Lresultado))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(Fresultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnsumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnsumaActionPerformed
-        Entrada ();
-       
+        entrada ();
         Datos.Suma(num1, num2);
-        Lresultado.setText(String.valueOf(Datos.resultado));
+        Fresultado.setText(String.valueOf(Datos.resultado));
     }//GEN-LAST:event_BtnsumaActionPerformed
+
+    private void BtnrestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnrestaActionPerformed
+        entrada ();
+        Datos.Resta(num1, num2);
+       Fresultado.setText(String.valueOf(Datos.resultado));
+    }//GEN-LAST:event_BtnrestaActionPerformed
+
+    private void FresultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FresultadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FresultadoActionPerformed
 
  
     public static void main(String args[]) {
@@ -172,7 +191,7 @@ public class VentanaOperacion extends javax.swing.JFrame {
     private javax.swing.JButton Btnmultiplicacion;
     private javax.swing.JButton Btnresta;
     private javax.swing.JButton Btnsuma;
-    private javax.swing.JLabel Lresultado;
+    private javax.swing.JTextField Fresultado;
     private javax.swing.JTextField Num1;
     private javax.swing.JTextField Num2;
     private javax.swing.JLabel jLabel1;
